@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 import { User } from './typeorm/entities/User';
 import { UsersModule } from './users/Users.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Profile } from './typeorm/entities/Profile';
 
 ConfigModule.forRoot();
 
@@ -20,7 +21,7 @@ ConfigModule.forRoot();
       database: 'sql6517506',
       logging: ['error', 'info', 'warn', 'log'],
       namingStrategy: new SnakeNamingStrategy(),
-      entities: [User],
+      entities: [User, Profile],
       synchronize: true,
       autoLoadEntities: true,
     }),
